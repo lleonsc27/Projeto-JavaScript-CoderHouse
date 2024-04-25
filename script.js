@@ -23,6 +23,13 @@ function mostrarTagsNoConsole(notas) {
     });
 }
 
+// Função para filtrar notas com base em uma propriedade
+function filtrar(entrada, propriedade) {
+    const resultadoFiltro = notas.filter((nota) => nota[propriedade].includes(primeiraMaiusculo(entrada)));
+    const titulosFiltrados = resultadoFiltro.map(nota => nota.titulo); // Array provisório para ser usado com alerts
+    return titulosFiltrados;
+}
+
 // Função para colocar primeira letra na string em maiúsculo
 function primeiraMaiusculo(entrada) {
     return entrada.charAt(0).toUpperCase() + entrada.substring(1).toLowerCase();
@@ -66,11 +73,11 @@ function paraBoleano(entrada) {
 // Loop do menu
 while (true) {
 
-    let entrada = prompt(`Menu inicial\n\nPor favor, selecione uma das opções abaixo digitando o número correspondente:\n\n1 - Adicionar nota\n2 - Editar nota\n3 - Excluir nota\n4 - Ver nota\n\nPara encerrar o programa, digite "Sair".`);
+    let entrada = prompt(`Menu inicial\n\nPor favor, selecione uma das opções abaixo digitando o número correspondente:\n\n1 - Adicionar nota\n2 - Editar nota\n3 - Excluir nota\n4 - Ver nota\n5 - Filtrar por tag\n\nPara encerrar o programa, digite "Sair".`);
 
     if (entrada.toUpperCase() === "SAIR") {
         break;
-    } else if (entrada < 1 || entrada > 4 || isNaN(entrada)) {
+    } else if (entrada < 1 || entrada > 5 || isNaN(entrada)) {
         alert("Entrada inválida!");
     }
 
@@ -87,6 +94,9 @@ while (true) {
             break;
         case "4":
             verNota(notas);
+            break;
+        case "5":
+            filtrarTag(notas);
             break;
     }
 }
@@ -209,4 +219,38 @@ function verNota(notas) {
     }
 
     alert(`Informações da nota:\n\nTítulo: ${notas[paraVer].titulo}\nCorpo: ${notas[paraVer].corpo}\nCor: ${notas[paraVer].cor}\nTag: ${notas[paraVer].tag}\nLembrete: ${notas[paraVer].lembrete}\nFixar: ${notas[paraVer].fixar}`);
+}
+
+// Função para filtrar as notas por tags
+function filtrarTag(notas) {
+    let tags = criarTags(notas)
+
+    alert(`Lista de Tags:\n\n${tags.join(", ")}`);
+
+    let entrada = primeiraMaiusculo(prompt("Escreva a tag que você deseja filtrar:\n\nDigite \"Menu\" para voltar ao menu inicial"));
+
+    if (entrada.toUpperCase() === "MENU") {
+        return;
+    } else if (!tags.includes(entrada)) {
+        alert("Tag não encontrada!");
+        return;
+    }
+    
+    let resultado = filtrar(entrada, "tag")
+
+    alert(`Notas com a tag ${primeiraMaiusculo(entrada)}:\n\n${resultado.join(", ")}`);
+
+    let notaParaVer = primeiraMaiusculo(prompt("Qual nota você deseja ver?\n\nDigite \"Menu\" para voltar ao menu inicial"));
+
+    if (notaParaVer.toUpperCase() === "MENU") {
+        return;
+    } 
+
+    let paraVer = selecionarNota(notaParaVer);
+
+    if (paraVer === -1) {
+        return;
+    }
+
+    alert(`Informações da nota:\n\nTítulo: ${notas[paraVer].titulo}\nCorpo: ${notas[paraVer].corpo}\nCor: ${notas[paraVer].cor}\nTag: ${notas[paraVer].tag}\nLembrete: ${notas[paraVer].lembrete}\nFixar: ${notas[paraVer].fixar}`); 
 }

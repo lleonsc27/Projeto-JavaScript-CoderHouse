@@ -1,0 +1,78 @@
+body {
+    margin: 0em;
+    padding: 0em;
+}
+
+/*******************   NAVBAR   *******************/
+.navbar {
+background: #7f6969;
+}
+
+.navbar-brand-img {
+    height: 3em;
+    border-radius: 100em;
+}
+
+#main {
+    display: grid;
+    grid-template-areas: 
+    "header aside";
+    grid-template-columns: 15% auto;
+    grid-template-rows: 100vh;
+}
+
+
+/*******************   HEADER   *******************/
+#header {
+    background: #937c7c;
+}
+
+/*******************   ASIDE   *******************/
+#aside {
+    background: #d4c0c0;
+    display: grid;
+    grid-template-areas: 
+    "first-box  second-box  third-box"
+    "fourth-box  fifth-box  sixth-box";
+    grid-gap: 1em; 
+    align-content: baseline;
+    justify-content: center;
+    
+}
+.first-box,
+.second-box,
+.third-box,
+.fourth-box,
+.fifth-box,
+.sixth-box {
+    margin: 1em;
+    word-wrap: break-word; 
+    width: 20em;
+    min-height: 15em;
+    max-height: 30em;
+    overflow-y: auto;
+}
+
+.first-box {
+    background: #000;
+}
+
+.second-box {
+    background: #a18888;
+}
+
+.third-box {
+    background: #b44e4e;
+}
+
+.fourth-box {
+    background: #f80808;
+}
+
+.fifth-box {
+    background: #c84343;
+}
+
+.sixth-box {
+    background: #124e2e;
+}

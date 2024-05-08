@@ -24,12 +24,30 @@ background: #7f6969;
 
 /*******************   HEADER   *******************/
 #header {
-    background: #937c7c;
+    background-color: gray;
+}
+
+.notas{
+    display: flex;
+    flex-direction: column;
+    border-top: ridge;
+    margin: 10px;
+}
+
+.notas a{
+    margin: 2px;
+    text-decoration: none !important;
+    color: white;
+}
+
+.icon{
+    width: 32px;
+    height: 42px;
 }
 
 /*******************   ASIDE   *******************/
 #aside {
-    background: #d4c0c0;
+    background: azure;
     display: grid;
     grid-template-areas: 
     "first-box  second-box  third-box"

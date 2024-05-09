@@ -1,38 +1,22 @@
 const notas = []; // Array para armazenar as notas
 
+// Função para colocar primeira letra na string em maiúsculo
+const primeiraMaiusculo = entrada => entrada.charAt(0).toUpperCase() + entrada.substring(1).toLowerCase();
+
+// Função para exibir mensagem, aviso de retorno ao menu e formatação da entrada.
+const obterEntradaUsuario = mensagem => primeiraMaiusculo(prompt(`${mensagem}\n\nDigite "Menu" para voltar ao menu inicial`));
+
 // Função para criar tags
-function criarTags(notas) {
-    const tags = new Set();
-
-    notas.forEach(nota => {
-        if (nota.tag) {
-            tags.add(nota.tag);
-        }
-    });
-
-    return Array.from(tags);
-}
+const criarTags = notas => Array.from(new Set(notas.flatMap(nota => nota.tag ? [nota.tag] : [])));
 
 // Função para mostrar tags no console
-function mostrarTagsNoConsole(notas) {
-    const tags = criarTags(notas);
-    
-    console.log("Tags disponíveis:");
-    tags.forEach((tag, index) => {
-        console.log(`${index + 1}. ${tag}`);
-    });
-}
+const mostrarTagsNoConsole = notas => console.log(`Tags disponíveis:\n\n${criarTags(notas).join("\n")}`);
 
 // Função para filtrar notas com base em uma propriedade
 function filtrar(entrada, propriedade) {
     const resultadoFiltro = notas.filter((nota) => nota[propriedade].includes(primeiraMaiusculo(entrada)));
     const titulosFiltrados = resultadoFiltro.map(nota => nota.titulo); // Array provisório para ser usado com alerts
     return titulosFiltrados;
-}
-
-// Função para colocar primeira letra na string em maiúsculo
-function primeiraMaiusculo(entrada) {
-    return entrada.charAt(0).toUpperCase() + entrada.substring(1).toLowerCase();
 }
 
 // Função construtora de notas
@@ -47,28 +31,24 @@ function Nota(titulo, corpo, cor, tag, lembrete, fixar) {
 
 // Função para mostrar as notas por título
 function mostrarNotasAlert(notas) {
-    var tituloNotas = "Notas cadastradas:\n\n";
-    notas.forEach((nota) => {
-        tituloNotas += nota.titulo + "\n";
-    });
-    alert(tituloNotas);
+    const tituloNotas = notas.map((notas) => notas.titulo).join("\n");
+
+    alert(`Notas cadastradas:\n\n${tituloNotas}`);
 }
 
 // Função para selecionar nota
 function selecionarNota(nota) {
-    for (let i = 0; i < notas.length; i++) {
-        if (notas[i].titulo === nota) {
-            return i;
-        }
-    }
-    alert("Nota não encontrada!");
-    return -1;
+    const index = notas.findIndex(n => n.titulo === nota);
+    return index !== -1 ? index : (alert("Nota não encontrada!"), -1);
+}
+
+function mostrarInfosDaNota(index, mensagem) {
+    if (mensagem === undefined) mensagem = "Informações da nota:";
+    alert(`${mensagem}\n\nTítulo: ${notas[index].titulo}\nCorpo: ${notas[index].corpo}\nCor: ${notas[index].cor}\nTag: ${notas[index].tag}\nLembrete: ${notas[index].lembrete}\nFixar: ${notas[index].fixar}`); 
 }
 
 // Função para transformar entrada em booleano
-function paraBoleano(entrada) {
-    return entrada.toUpperCase() === "SIM" || entrada === "1";
-}
+const paraBooleano = entrada => entrada.toUpperCase() === "SIM" || entrada === "1";
 
 // Loop do menu
 while (true) {
@@ -85,6 +65,7 @@ while (true) {
         case "1":
             adicionarNota(notas);
             mostrarTagsNoConsole(notas); // Mostra as tags no console após adicionar uma nota
+            console.log(criarTags(notas));
             break;
         case "2":
             editarNota(notas);
@@ -103,18 +84,16 @@ while (true) {
 
 // Função para adicionar notas
 function adicionarNota(notas) {
-    let entradaTitulo = primeiraMaiusculo(prompt("Escreva o título da nota:\n\nDigite \"Menu\" para voltar ao menu inicial"));
+    let entradaTitulo = obterEntradaUsuario("Escreva o título da nota:");
 
-    if (entradaTitulo.toUpperCase() === "MENU") {
-        return;
-    } 
+    if (entradaTitulo.toUpperCase() === "MENU") return;
 
     let titulo = entradaTitulo;
     let corpo = primeiraMaiusculo(prompt("Escreva a sua nota:"));
     let cor = primeiraMaiusculo(prompt("Escreva a cor da nota:"));
     let tag = primeiraMaiusculo(prompt("Escreva a tag da nota:"));
     let lembrete = primeiraMaiusculo(prompt("Adicione uma data lembrete para a nota:"));
-    let fixar = paraBoleano(prompt("Você deseja fixar a nota?\n\n1 - Sim\n2 - Não"));
+    let fixar = paraBooleano(prompt("Você deseja fixar a nota?\n\n1 - Sim\n2 - Não"));
 
     const nota = new Nota(titulo, corpo, cor, tag, lembrete, fixar);
     notas.push(nota);
@@ -126,25 +105,21 @@ function adicionarNota(notas) {
 function editarNota(notas) {
     mostrarNotasAlert(notas);
 
-    let notaParaEditar = primeiraMaiusculo(prompt("Qual nota você deseja alterar?\n\nDigite \"Menu\" para voltar ao menu inicial"));
+    let notaParaEditar = obterEntradaUsuario("Qual nota você deseja alterar?");
 
-    if (notaParaEditar.toUpperCase() === "MENU") {
-        return;
-    } 
+    if (notaParaEditar.toUpperCase() === "MENU") return;
 
     let paraEditar = selecionarNota(notaParaEditar);
 
-    if (paraEditar === -1) {
-        return;
-    }
+    if (paraEditar === -1) return;
 
-    alert(`Informações que podem ser alteradas:\n\nTítulo: ${notas[paraEditar].titulo}\nCorpo: ${notas[paraEditar].corpo}\nCor: ${notas[paraEditar].cor}\nTag: ${notas[paraEditar].tag}\nLembrete: ${notas[paraEditar].lembrete}\nFixar: ${notas[paraEditar].fixar}`);
+    mostrarInfosDaNota(paraEditar, "Informações que podem ser alteradas:")
 
-    let propriedadeParaEditar = prompt("Informe o numero da propriedade você deseja alterar?\n\n1 - Título\n2 - Corpo\n3 - Cor\n4 - Tag\n5 - Lembrete\n6 - Fixar\n\nDigite \"Menu\" para voltar ao menu inicial");
+    let propriedadeParaEditar = obterEntradaUsuario("Informe o numero da propriedade você deseja alterar?\n\n1 - Título\n2 - Corpo\n3 - Cor\n4 - Tag\n5 - Lembrete\n6 - Fixar");
 
-    if (propriedadeParaEditar.toUpperCase() === "MENU") {
-        return;
-    } else if (propriedadeParaEditar <1 || propriedadeParaEditar >6 || isNaN(propriedadeParaEditar)){
+    if (propriedadeParaEditar.toUpperCase() === "MENU") return;
+
+    if (propriedadeParaEditar < 1 || propriedadeParaEditar > 6 || isNaN(propriedadeParaEditar)) {
         alert("Entrada inválida!");
         return;
     }
@@ -171,29 +146,25 @@ function editarNota(notas) {
             notas[paraEditar].lembrete = novoLembrete;
             break;
         case "6":
-            let novoFixar = paraBoleano(prompt("Você deseja fixar a nota?\n\n1 - Sim\n2 - Não"));
+            let novoFixar = paraBooleano(prompt("Você deseja fixar a nota?\n\n1 - Sim\n2 - Não"));
             notas[paraEditar].fixar = novoFixar;
             break;
     }
 
-    alert(`Informações atualizadas da nota:\n\nTítulo: ${notas[paraEditar].titulo}\nCorpo: ${notas[paraEditar].corpo}\nCor: ${notas[paraEditar].cor}\nTag: ${notas[paraEditar].tag}\nLembrete: ${notas[paraEditar].lembrete}\nFixar: ${notas[paraEditar].fixar}`);
+    mostrarInfosDaNota(paraEditar, "Informações atualizadas da nota:");
 }
 
 // Função para excluir nota
 function excluirNota(notas) {
     mostrarNotasAlert(notas);
 
-    let notaParaExcluir = primeiraMaiusculo(prompt("Qual nota você deseja excluir?\n\nDigite \"Menu\" para voltar ao menu inicial"));
+    let notaParaExcluir = obterEntradaUsuario("Qual nota você deseja excluir?");
 
-    if (notaParaExcluir.toUpperCase() === "MENU") {
-        return;
-    } 
+    if (notaParaExcluir.toUpperCase() === "MENU") return;
 
     let paraExcluir = selecionarNota(notaParaExcluir);
 
-    if (paraExcluir === -1) {
-        return;
-    }
+    if (paraExcluir === -1) return;
     
     notas.splice(paraExcluir, 1);
 
@@ -206,51 +177,43 @@ function excluirNota(notas) {
 function verNota(notas) {
     mostrarNotasAlert(notas);
 
-    let notaParaVer = primeiraMaiusculo(prompt("Qual nota você deseja ver?\n\nDigite \"Menu\" para voltar ao menu inicial"));
+    let notaParaVer = obterEntradaUsuario("Qual nota você deseja ver?");
 
-    if (notaParaVer.toUpperCase() === "MENU") {
-        return;
-    } 
+    if (notaParaVer.toUpperCase() === "MENU") return;
 
     let paraVer = selecionarNota(notaParaVer);
 
-    if (paraVer === -1) {
-        return;
-    }
+    if (paraVer === -1) return;
 
-    alert(`Informações da nota:\n\nTítulo: ${notas[paraVer].titulo}\nCorpo: ${notas[paraVer].corpo}\nCor: ${notas[paraVer].cor}\nTag: ${notas[paraVer].tag}\nLembrete: ${notas[paraVer].lembrete}\nFixar: ${notas[paraVer].fixar}`);
+    mostrarInfosDaNota(paraVer);
 }
 
 // Função para filtrar as notas por tags
 function filtrarTag(notas) {
-    let tags = criarTags(notas)
+    let tags = criarTags(notas);
 
-    alert(`Lista de Tags:\n\n${tags.join(", ")}`);
+    alert(`Lista de Tags:\n\n${tags.join("\n")}`);
 
-    let entrada = primeiraMaiusculo(prompt("Escreva a tag que você deseja filtrar:\n\nDigite \"Menu\" para voltar ao menu inicial"));
+    let entrada = obterEntradaUsuario("Escreva a tag que você deseja filtrar:");
 
-    if (entrada.toUpperCase() === "MENU") {
-        return;
-    } else if (!tags.includes(entrada)) {
+    if (entrada.toUpperCase() === "MENU") return;
+
+    if (!tags.includes(entrada)) {
         alert("Tag não encontrada!");
         return;
     }
     
-    let resultado = filtrar(entrada, "tag")
+    let resultado = filtrar(entrada, "tag");
 
-    alert(`Notas com a tag ${primeiraMaiusculo(entrada)}:\n\n${resultado.join(", ")}`);
+    alert(`Notas com a tag ${primeiraMaiusculo(entrada)}:\n\n${resultado.join("\n")}`);
 
-    let notaParaVer = primeiraMaiusculo(prompt("Qual nota você deseja ver?\n\nDigite \"Menu\" para voltar ao menu inicial"));
+    let notaParaVer = obterEntradaUsuario("Qual nota você deseja ver?");
 
-    if (notaParaVer.toUpperCase() === "MENU") {
-        return;
-    } 
+    if (notaParaVer.toUpperCase() === "MENU") return;
 
     let paraVer = selecionarNota(notaParaVer);
 
-    if (paraVer === -1) {
-        return;
-    }
+    if (paraVer === -1) return;
 
-    alert(`Informações da nota:\n\nTítulo: ${notas[paraVer].titulo}\nCorpo: ${notas[paraVer].corpo}\nCor: ${notas[paraVer].cor}\nTag: ${notas[paraVer].tag}\nLembrete: ${notas[paraVer].lembrete}\nFixar: ${notas[paraVer].fixar}`); 
+    mostrarInfosDaNota(paraVer);
 }

@@ -11,7 +11,7 @@
     --h2: 600 12px/16px var(--ff);
     --h3: 700 20px/24px var(--ff);
     --p: 400 14px var(--ff);
-    --transition: 0.3s ease-in-out;
+    --transition: 0.3s transform;
     --shadow-style: rgba(0, 0, 0, 0.25);
     --shadow: 1px 1px 5px 0px var(--shadow-style);
     --shadow-bottom: 0px 1px 5px 0px var(--shadow-style);
@@ -42,7 +42,7 @@ a {
     color: inherit;
 }
 
-.icon{filter: invert(10%) sepia(8%) saturate(13%) hue-rotate(316deg) brightness(97%) contrast(88%);}
+.icon{filter: invert(12%) sepia(2%) saturate(19%) hue-rotate(10deg) brightness(95%) contrast(92%);}
 
 .lupa{filter: invert(57%) sepia(0%) saturate(1%) hue-rotate(218deg) brightness(92%) contrast(87%);}
 
@@ -61,9 +61,13 @@ a {
     padding-left: 64px;
     box-shadow: var(--shadow-bottom);
     z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* forma que eu achei de remover 4px que estavam ficando abaixo da logo (img = 32px) */
 .logo {
     display: flex;
     flex-wrap: nowrap;
@@ -72,7 +76,7 @@ a {
 }
 
 .logo h1 {
-    color: #F1F1F1;
+    color: var(--colorprimary);
     font-size: 24px;
     font-weight: 700;
     filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.25));
@@ -93,6 +97,7 @@ a {
     margin: 0 auto;
     padding: 8px 16px;
     width: 252px;
+    cursor: pointer;
 }
 
 .searchbox p{
@@ -105,13 +110,14 @@ a {
 .container {
     display: flex;
     flex-flow: row nowrap;
-    /* flex-grow: 1; */
-    /* align-items: stretch; */
-    /* min-width: 100vh; */
-    /* background-color: rgb(227, 140, 25); */
+    margin-top: 56px;
 }
 
 /********************* ASIDE *********************/
+
+.btn-hamburguer {
+    display: none;
+}
 
 .aside {
     background-color: var(--colorprimary);
@@ -122,33 +128,36 @@ a {
     z-index: 1;
 }
 
-.nav ul {padding: 8px 8px 0;}
+.menu div {padding: 8px 8px 0;}
 
-.nav-item {
+.menu-item {
     display: flex;
     gap: 12px;
     padding: 16px;
+    border: none;
+    width: 232px;
+    cursor: pointer;
 }
 
-.nav-item:hover {
+.menu-item:hover {
     background-color: var(--colortertiary);
     border-radius: 10px;
     box-shadow: var(--shadow);
 }
 
-.nav p {
+.menu p {
     font-family: Inter;
     font-size: 16px;
     font-weight: 700;
 }
 
 hr {
-    width: 232px;
+    width: 216px;
     height: 0px;
     height: 2px;
     background-color: var(--colortertiary);
     border: none;
-    margin: 16px 0;
+    margin: 16px;
     align-self: center;
     border-radius: 5px;
 }
@@ -171,14 +180,14 @@ hr {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 936px;
     gap: 24px;
 }
 
 .board-notas li {
     background-color: var(--colortertiary);
     width: 184px;
-    height: auto;
+    height: 220px;
+    overflow: hidden;
     list-style: none;
     border-radius: 10px;
     padding: 16px;
@@ -186,4 +195,96 @@ hr {
     display: flex;
     flex-flow: column nowrap;
     gap: 8px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  
+    .header {
+        justify-content: space-between;
+        gap: 16px;
+        background-color: var(--colorprimary);
+        padding: 0px 16px;
+        z-index: 1;
+    }
+    
+    .btn-hamburguer {
+        display: block;
+        cursor: pointer;
+    }
+    
+    
+    .logo h1 {
+        color: var(--colorsecundary);
+    }
+    
+    .searchbox {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        background-color: var(--colorprimary);
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+        width: auto;
+        
+    }
+    
+    .searchbox p{
+        display: none;
+    }
+    
+    .lupa{filter: invert(12%) sepia(2%) saturate(19%) hue-rotate(10deg) brightness(95%) contrast(92%);}
+    
+    /********************* ASIDE *********************/
+
+    .aside {
+        display: none;
+        position: fixed;
+        top: 56px;
+        left: 0;
+        height: 100vh;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    /********************* MAIN *********************/
+    
+    .main {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        background-color: var(--colorprimary);
+        min-height: 100vh;
+        padding: 8px;
+        align-items: center;
+    }
+
+    .board-notas {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .board-notas li {
+        background-color: var(--colortertiary);
+        flex: 1 0 152px;
+        height: 220px;
+        overflow: hidden;
+        list-style: none;
+        border-radius: 10px;
+        padding: 16px;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 8px;
+    }
+
+}
+
+@media (max-width: 410px) {
+    .board-notas li {
+        flex: 1 0 120px;
+    }
 }

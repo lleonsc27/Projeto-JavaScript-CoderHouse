@@ -217,3 +217,23 @@
 
 //     mostrarInfosDaNota(paraVer);
 // }
+
+////////// MEDIA QUERIES //////////
+
+// Função que controla o menu hamburguer
+function clickMenu() {
+    if (menu.style.display == 'block') {
+        menu.style.display = 'none'
+    } else { 
+        menu.style.display = 'block'
+    }
+}
+
+// Adiciona um event listener ao evento de redimensionamento da janela para verificar o tamanho da janela e ocultar o menu se a largura da janela for maior que 768px
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        menu.style.display = 'block';
+    } else {
+        menu.style.display = 'none';
+    }
+});

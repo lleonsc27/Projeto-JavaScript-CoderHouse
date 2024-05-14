@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Notas</title>
     <link rel="icon" href="./images/logo.png">
     <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-    </style></head>
+        </style></head>
 <body>
     <header class="header">
+        <div class="btn-hamburguer" onclick="clickMenu()">
+            <img class="icon" src="./icons/menu.svg" alt="">
+        </div>
+
         <div class="logo">
             <img src="./images/logo.png" alt="">
             <h1>Notas</h1>
@@ -23,43 +28,56 @@
     </header>
 
     <div class="container">
-        <aside class="aside">
-            <nav class="nav">
-                <ul>
-                    <li class="nav-item">
-                        <img class="icon" src="./icons/notas.svg" alt="">
-                        <p>Notas</p>
-                    </li>
-                    <li class="nav-item">
-                        <img class="icon" src="./icons/lembrete.svg" alt="">
-                        <p>Lembretes</p>
-                    </li>
-                </ul>
+
+        <aside id="menu" class="aside">
+            <nav class="menu">
+                <div>
+                    <a href="#">
+                        <button type="button" class="menu-item">
+                            <img class="icon" src="./icons/notas.svg" alt="">
+                            <p>Notas</p>
+                        </button>
+                    </a>
+                    <a href="#">
+                        <button type="button" class="menu-item">
+                            <img class="icon" src="./icons/lembrete.svg" alt="">
+                            <p>Lembretes</p>
+                        </button>
+                    </a>
+                </div>
             </nav>
         
             <hr>
         
             <div class="marcadores">
                 <h2>Marcadores</h2>
-                <nav class="nav">
-                    <ul>
-                        <li class="nav-item">
-                            <img class="icon" src="./icons/criar.svg" alt="">
-                            <p>Criar</p>
-                        </li>
-                        <li class="nav-item">
-                            <img class="icon" src="./icons/editar.svg" alt="">
-                            <p>Editar</p>
-                        </li>
-                        <li class="nav-item">
-                            <img class="icon" src="./icons/marcador.svg" alt="">
-                            <p>Marcador 1</p>
-                        </li>
-                        <li class="nav-item" class="nav-item">
-                            <img class="icon" src="./icons/marcador.svg" alt="">
-                            <p>Marcador 2</p>
-                        </li>
-                    </ul>
+                <nav class="menu">
+                    <div>
+                        <a href="#">
+                            <button type="button" class="menu-item">
+                                <img class="icon" src="./icons/criar.svg" alt="">
+                                <p>Criar</p>
+                            </button>
+                        </a>
+                        <a href="#">
+                            <button type="button" class="menu-item">
+                                <img class="icon" src="./icons/editar.svg" alt="">
+                                <p>Editar</p>
+                            </button>
+                        </a>
+                        <a href="#">
+                            <button type="button" class="menu-item">
+                                <img class="icon" src="./icons/marcador.svg" alt="">
+                                <p>Marcador 1</p>
+                            </button>
+                        </a>
+                        <a href="#">
+                            <button type="button" class="menu-item">
+                                <img class="icon" src="./icons/marcador.svg" alt="">
+                                <p>Marcador 2</p>
+                            </button>
+                        </a>
+                    </div>
                 </nav>
             </div>
         </aside>
@@ -108,6 +126,5 @@
             </ul>
         </main>
     </div>
-
 </body>
 </html>

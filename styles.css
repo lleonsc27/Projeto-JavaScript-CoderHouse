@@ -19,10 +19,10 @@
     --shadow-spread: 0px 0px 5px 1px var(--shadow-style);
 }
 
-h1{font: var(--h1);}
-h2{font: var(--h2);}
-h3{font: var(--h3);}
-p{font: var(--p);}
+h1 {font: var(--h1);}
+h2 {font: var(--h2);}
+h3 {font: var(--h3);}
+p {font: var(--p);}
 
 h1,
 h2,
@@ -42,9 +42,9 @@ a {
     color: inherit;
 }
 
-.icon{filter: invert(12%) sepia(2%) saturate(19%) hue-rotate(10deg) brightness(95%) contrast(92%);}
+.icon {filter: invert(12%) sepia(2%) saturate(19%) hue-rotate(10deg) brightness(95%) contrast(92%);}
 
-.lupa{filter: invert(57%) sepia(0%) saturate(1%) hue-rotate(218deg) brightness(92%) contrast(87%);}
+.lupa {filter: invert(57%) sepia(0%) saturate(1%) hue-rotate(218deg) brightness(92%) contrast(87%);}
 
 * {
     margin: 0;
@@ -100,7 +100,7 @@ a {
     cursor: pointer;
 }
 
-.searchbox p{
+.searchbox p {
     opacity: 70%;
     font-weight: 500;
 }
@@ -115,9 +115,7 @@ a {
 
 /********************* ASIDE *********************/
 
-.btn-hamburguer {
-    display: none;
-}
+.btn-hamburguer {display: none;}
 
 .aside {
     background-color: var(--colorprimary);
@@ -128,7 +126,7 @@ a {
     z-index: 1;
 }
 
-.menu div {padding: 8px 8px 0;}
+.menu {padding: 8px 8px;}
 
 .menu-item {
     display: flex;
@@ -151,18 +149,17 @@ a {
     font-weight: 700;
 }
 
+.aside h2 {padding: 8px 8px 0 16px;}
+
 hr {
-    width: 216px;
-    height: 0px;
-    height: 2px;
+    width: calc(100% - 32px);
+    height: 3px;
     background-color: var(--colortertiary);
     border: none;
-    margin: 16px;
+    margin: 0 16px;
     align-self: center;
     border-radius: 5px;
 }
-
-.aside h2 {padding-left: 16px;}
 
 /********************* MAIN *********************/
 
@@ -172,7 +169,7 @@ hr {
     flex-grow: 1;
     background-color: var(--colorprimary);
     min-height: 100vh;
-    padding: 40px;
+    padding: 32px 24px;
     align-items: center;
 }
 
@@ -198,6 +195,20 @@ hr {
     cursor: pointer;
 }
 
+.adicionar-nota {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: var(--coloraccent);
+    width: 56px;
+    height: 56px;
+    border-radius: 50px;
+    box-shadow: var(--shadow-spread);
+}
+
 @media (max-width: 768px) {
   
     .header {
@@ -214,9 +225,7 @@ hr {
     }
     
     
-    .logo h1 {
-        color: var(--colorsecundary);
-    }
+    .logo h1 {color: var(--colorsecundary);}
     
     .searchbox {
         display: flex;
@@ -230,9 +239,7 @@ hr {
         
     }
     
-    .searchbox p{
-        display: none;
-    }
+    .searchbox p {display: none;}
     
     .lupa{filter: invert(12%) sepia(2%) saturate(19%) hue-rotate(10deg) brightness(95%) contrast(92%);}
     
@@ -281,6 +288,10 @@ hr {
         gap: 8px;
     }
 
+    .adicionar-nota {
+        bottom: 30px;
+        right: 30px;
+    }
 }
 
 @media (max-width: 410px) {

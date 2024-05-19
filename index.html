@@ -1,73 +1,126 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto JavaScript | CoderHouse</title>
+    <title>Notas</title>
     <link rel="icon" href="./images/logo.png">
     <link rel="stylesheet" href="./styles.css">
-    <script src="./script.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-</head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        </style></head>
 <body>
-        <nav class="navbar navbar-light justify-content-between">
-            <a class="navbar-brand"><img class="navbar-brand-img" src="./images/logo.png" style="margin-left: 16px;"></a>
-            <form class="form-inline">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-          </nav>
-
-<main id="main">
-    <header id="header">
-      <div>
-        <div class="notas">
-          <div>
-            <img src="icon/notas.svg" alt="" class="icon">
-            <a href="">notas</a>
-          </div>
-          <div>
-            <img src="icon/lembrete.svg" alt="" class="icon">
-            <a href="">lembretes</a>
-          </div>
+    <header class="header">
+        <div class="btn-hamburguer" onclick="clickMenu()">
+            <img class="icon" src="./icons/menu.svg" alt="">
         </div>
-        <div class="notas">
-          <h6 style="font-style: oblique;">MARCADORES</h6>
-          <div>
-            <img src="icon/criarMarcador.svg" alt="" class="icon">
-            <a href="">criar</a>
-          </div>
-          <div>
-            <img src="icon/editarMarcadores.svg" alt="" class="icon">
-            <a href="">editar</a>
-          </div>
+        
+        <div class="logo">
+            <img src="./images/logo.png" alt="">
+            <h1>Notas</h1>
         </div>
-        <div class="notas">
-          <div>
-            <img src="icon/arquivo.svg" alt="" class="icon">
-            <a href="">arquivo</a>
-          </div>
-          <div>
-            <img src="icon/lixeira.svg" alt="" class="icon">
-            <a href="">lixeira</a>
-          </div>
+        
+        <div class="searchbox">
+            <p>Pesquisar</p>
+            <img class="lupa" src="./icons/lupa.svg" alt="">
         </div>
-      </div>
     </header>
+    
+    <div class="container">
+        
+        <aside id="menu" class="aside">
+            <nav class="menu">
+                <div>
+                    <a href="#">
+                        <div role="button" class="menu-item">
+                            <img class="icon" src="./icons/notas.svg" alt="">
+                            <p>Notas</p>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div role="button" class="menu-item">
+                            <img class="icon" src="./icons/lembrete.svg" alt="">
+                            <p>Lembretes</p>
+                        </div>
+                    </a>
+                </div>
+            </nav>
+            
+            <hr>
+            
+            <div class="aside-tags">
+                <h2>Tags</h2>
+                <nav class="menu" id="actions-tags">
+                    <div role="button" class="menu-item" id="tag-criar">
+                        <img class="icon" src="./icons/criar.svg" alt="">
+                        <p>Criar</p>
+                    </div>
+                    <div role="button" class="menu-item" id="tag-editar">
+                        <img class="icon" src="./icons/editar.svg" alt="">
+                        <p>Editar</p>
+                    </div>
+                    <!-- estas tags estão sendo usadas para preencher espaço e testar as funções, mas serão removidas futuramente -->
+                    <div role="button" class="menu-item">
+                        <img class="icon" src="./icons/tag.svg" alt="">
+                        <p>Tag 1</p>
+                    </div>
+                    <div role="button" class="menu-item">
+                        <img class="icon" src="./icons/tag.svg" alt="">
+                        <p>Tag 2</p>
+                    </div>
+                </nav>
+            </div>
+            
+            <hr>
 
-    <aside id="aside">
-       <div class="first-box"></div>
-       <div class="second-box"></div>
-       <div class="third-box"></div>
-       <div class="fourth-box"></div>
-       <div class="fifth-box"></div>
-       <div class="sixth-box"></div>
-    </aside>
-
-</main>
+            <nav class="menu">
+                <div>
+                    <div role="button" class="menu-item">
+                        <img class="icon" src="./icons/arquivo.svg" alt="">
+                        <p>Arquivo</p>
+                    </div>
+                    <div role="button" class="menu-item">
+                        <img class="icon" src="./icons/lixeira.svg" alt="">
+                        <p>Lixeira</p>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <ul class="board-notas">
+                <!-- estas notas estão sendo usadas para preencher espaço e testar as funções, mas serão removidas futuramente -->
+                <li>
+                    <div class="atributos">
+                        <div class="arquivo" class="hidden"><img src="./icons/arquivo.svg" alt=""></div>
+                        <div class="tag">Compras</div>
+                    </div>
+                    <h3>Nota 01</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptatibus eos fugiat? Voluptas illo voluptate ea eaque. Error minima ullam quas quibusdam. Maiores veritatis quaerat ut voluptatem saepe quo rem.
+                    </p>
+                </li>
+                <li>
+                    <div class="tag"></div>
+                    <h3>Nota 02</h3>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    </p>
+                </li>
+                <li>
+                    <div class="tag"></div>
+                    <h3>Nota 03</h3>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis ipsa tempora natus ex rem sequi quasi quaerat! Unde numquam id totam error voluptas velit recusandae. Sequi ab sit quos reprehenderit! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus dolore veritatis maiores eos nostrum commodi aliquam dolorum maxime quia vitae consectetur, ex inventore ut, aspernatur animi quae quod alias praesentium!
+                    </p>
+                </li>
+            </ul>
+            
+            <div class="adicionar-nota" role="button" aria-label="botão adicionar nova nota">
+                <img src="./icons/mais.svg" alt="">
+            </div>
+        </main>
+    </div>
 </body>
+<script src="./script.js"></script>
 </html>

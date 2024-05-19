@@ -6,7 +6,6 @@
     <title>Notas</title>
     <link rel="icon" href="./images/logo.png">
     <link rel="stylesheet" href="./styles.css">
-    <script src="./script.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         </style></head>
@@ -15,139 +14,113 @@
         <div class="btn-hamburguer" onclick="clickMenu()">
             <img class="icon" src="./icons/menu.svg" alt="">
         </div>
-
+        
         <div class="logo">
             <img src="./images/logo.png" alt="">
             <h1>Notas</h1>
         </div>
-
+        
         <div class="searchbox">
             <p>Pesquisar</p>
             <img class="lupa" src="./icons/lupa.svg" alt="">
         </div>
     </header>
-
+    
     <div class="container">
-
+        
         <aside id="menu" class="aside">
             <nav class="menu">
                 <div>
                     <a href="#">
-                        <button type="button" class="menu-item">
+                        <div role="button" class="menu-item">
                             <img class="icon" src="./icons/notas.svg" alt="">
                             <p>Notas</p>
-                        </button>
+                        </div>
                     </a>
                     <a href="#">
-                        <button type="button" class="menu-item">
+                        <div role="button" class="menu-item">
                             <img class="icon" src="./icons/lembrete.svg" alt="">
                             <p>Lembretes</p>
-                        </button>
+                        </div>
                     </a>
                 </div>
             </nav>
-        
+            
             <hr>
-        
-            <div class="marcadores">
-                <h2>Marcadores</h2>
-                <nav class="menu">
-                    <div>
-                        <a href="#">
-                            <button type="button" class="menu-item">
-                                <img class="icon" src="./icons/criar.svg" alt="">
-                                <p>Criar</p>
-                            </button>
-                        </a>
-                        <a href="#">
-                            <button type="button" class="menu-item">
-                                <img class="icon" src="./icons/editar.svg" alt="">
-                                <p>Editar</p>
-                            </button>
-                        </a>
-                        <a href="#">
-                            <button type="button" class="menu-item">
-                                <img class="icon" src="./icons/marcador.svg" alt="">
-                                <p>Marcador 1</p>
-                            </button>
-                        </a>
-                        <a href="#">
-                            <button type="button" class="menu-item">
-                                <img class="icon" src="./icons/marcador.svg" alt="">
-                                <p>Marcador 2</p>
-                            </button>
-                        </a>
+            
+            <div class="aside-tags">
+                <h2>Tags</h2>
+                <nav class="menu" id="actions-tags">
+                    <div role="button" class="menu-item" id="tag-criar">
+                        <img class="icon" src="./icons/criar.svg" alt="">
+                        <p>Criar</p>
+                    </div>
+                    <div role="button" class="menu-item" id="tag-editar">
+                        <img class="icon" src="./icons/editar.svg" alt="">
+                        <p>Editar</p>
+                    </div>
+                    <!-- estas tags estão sendo usadas para preencher espaço e testar as funções, mas serão removidas futuramente -->
+                    <div role="button" class="menu-item">
+                        <img class="icon" src="./icons/tag.svg" alt="">
+                        <p>Tag 1</p>
+                    </div>
+                    <div role="button" class="menu-item">
+                        <img class="icon" src="./icons/tag.svg" alt="">
+                        <p>Tag 2</p>
                     </div>
                 </nav>
             </div>
-
+            
             <hr>
 
             <nav class="menu">
                 <div>
-                    <a href="#">
-                        <button type="button" class="menu-item">
-                            <img class="icon" src="./icons/arquivo.svg" alt="">
-                            <p>Arquivo</p>
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button type="button" class="menu-item">
-                            <img class="icon" src="./icons/lixeira.svg" alt="">
-                            <p>Lixeira</p>
-                        </button>
-                    </a>
+                    <div role="button" class="menu-item">
+                        <img class="icon" src="./icons/arquivo.svg" alt="">
+                        <p>Arquivo</p>
+                    </div>
+                    <div role="button" class="menu-item">
+                        <img class="icon" src="./icons/lixeira.svg" alt="">
+                        <p>Lixeira</p>
+                    </div>
                 </div>
             </nav>
         </aside>
         
         <main class="main">
             <ul class="board-notas">
+                <!-- estas notas estão sendo usadas para preencher espaço e testar as funções, mas serão removidas futuramente -->
                 <li>
+                    <div class="atributos">
+                        <div class="arquivo" class="hidden"><img src="./icons/arquivo.svg" alt=""></div>
+                        <div class="tag">Compras</div>
+                    </div>
                     <h3>Nota 01</h3>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptatibus eos fugiat? Voluptas illo voluptate ea eaque. Error minima ullam quas quibusdam. Maiores veritatis quaerat ut voluptatem saepe quo rem.
                     </p>
                 </li>
                 <li>
+                    <div class="tag"></div>
                     <h3>Nota 02</h3>
                     <p>
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                     </p>
                 </li>
                 <li>
+                    <div class="tag"></div>
                     <h3>Nota 03</h3>
                     <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis ipsa tempora natus ex rem sequi quasi quaerat! Unde numquam id totam error voluptas velit recusandae. Sequi ab sit quos reprehenderit! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus dolore veritatis maiores eos nostrum commodi aliquam dolorum maxime quia vitae consectetur, ex inventore ut, aspernatur animi quae quod alias praesentium!
                     </p>
                 </li>
-                <li>
-                    <h3>Nota 04</h3>
-                </li>
-                <li>
-                    <h3>Nota 05</h3>
-                </li>
-                <li>
-                    <h3>Nota 06</h3>
-                </li>
-                <li>
-                    <h3>Nota 07</h3>
-                </li>
-                <li>
-                    <h3>Nota 08</h3>
-                </li>
-                <li>
-                    <h3>Nota 09</h3>
-                </li>
-                <li>
-                    <h3>Nota 10</h3>
-                </li>
             </ul>
-
-            <div class="adicionar-nota">
+            
+            <div class="adicionar-nota" role="button" aria-label="botão adicionar nova nota">
                 <img src="./icons/mais.svg" alt="">
             </div>
         </main>
     </div>
 </body>
+<script src="./script.js"></script>
 </html>

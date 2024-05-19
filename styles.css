@@ -3,6 +3,7 @@
 :root {
     --colorp2: ;
     --colorprimary: #F1F1F1;
+    --colorprimary-50op: rgb(241, 241, 241, 0.5);
     --colorsecundary: #252525;
     --colortertiary: #77AC78;
     --coloraccent: #DBFF7A;
@@ -133,7 +134,7 @@ a {
     gap: 12px;
     padding: 16px;
     border: none;
-    width: 232px;
+    width: 200px;
     cursor: pointer;
 }
 
@@ -191,9 +192,46 @@ hr {
     box-shadow: var(--shadow);
     display: flex;
     flex-flow: column nowrap;
+    align-items: baseline;
     gap: 8px;
     cursor: pointer;
 }
+
+.atributos {
+    display: flex;
+    gap: 8px;
+}
+
+.arquivo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50px;
+    background-color: var(--colorprimary-50op);
+}
+
+.arquivo img {
+    width: 16px;
+    height: 16px;
+}
+
+.tag {
+    display: flex;
+    padding: 0 8px;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    border-radius: 5px;
+    background-color: var(--colorprimary-50op);
+    color: var(--colorsecundary);
+    font-family: var(--ff);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
 
 .adicionar-nota {
     display: flex;
@@ -207,6 +245,16 @@ hr {
     height: 56px;
     border-radius: 50px;
     box-shadow: var(--shadow-spread);
+    cursor: pointer;
+}
+
+.adicionar-nota:hover {
+    transform: scale(1.1);
+    transition: var(--transition);
+}
+
+.hidden {
+    display: none;
 }
 
 @media (max-width: 768px) {

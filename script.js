@@ -218,6 +218,9 @@
 //     mostrarInfosDaNota(paraVer);
 // }
 
+////////// PARTE 2 //////////
+
+
 ////////// MEDIA QUERIES //////////
 
 // Função que controla o menu hamburguer
@@ -237,3 +240,84 @@ window.addEventListener('resize', () => {
         menu.style.display = 'none';
     }
 });
+
+////////// REFATORANDO //////////
+
+// Botão para adicionar notas
+document.querySelector('.adicionar-nota').addEventListener('click', function() {
+    let novaNota = document.createElement("li");
+    
+    // Define o conteúdo da nova nota
+    novaNota.innerHTML = `
+        <div class="atributos">
+            <div class="arquivo"><img src="./icons/arquivo.svg" alt=""></div>
+            <div class="tag"></div>
+        </div>
+        <h3>Nova Nota</h3>
+        <p>Conteúdo da nova nota...</p>
+    `;
+    
+    // Seleciona a lista existente
+    let listaNotas = document.querySelector(".board-notas");
+    
+    // Adiciona a nova nota à lista existente
+    listaNotas.appendChild(novaNota);
+
+    // Ocultar box de tags se estiver vazio
+    const tags = novaNota.querySelector('.tag');
+    if (tags.textContent.trim() === '') {
+        tags.classList.add('hidden');
+    }
+
+    // Ocultar box de arquivo se estiver vazio
+    const arquivos = novaNota.querySelector('.arquivo');
+    if (arquivos.textContent.trim() === '') {
+        arquivos.classList.add('hidden');
+    }
+    
+});
+
+// Escondendo box de tags se estiver vazio (talvez seja preciso somente enquanto tiver as notas de exemplo)
+document.addEventListener("DOMContentLoaded", function() {
+    const tags = document.querySelectorAll('.tag');
+    tags.forEach(tag => {
+        if (tag.textContent.trim() === '') {
+            tag.classList.add('hidden');
+        }
+    });
+});
+
+// Escondendo box de arquivos se estiver vazio
+document.addEventListener("DOMContentLoaded", function() {
+    const arquivos = document.querySelectorAll('.arquivo');
+    arquivos.forEach(tag => {
+        if (tag.textContent.trim() === '') {
+            tag.classList.add('hidden');
+        }
+    });
+});
+
+// Botão para adicionar tags
+document.querySelector('#tag-criar').addEventListener('click', function() {
+    let novaTag = document.createElement("div");
+
+    let nomeNovaTag = prompt("Digite o nome da nova Tag:"); // pensar em outra forma que não use prompt
+    
+    // Define as propriedades da nova tag
+    novaTag.setAttribute('role', 'button');
+    novaTag.classList.add('menu-item');
+
+    // Define o conteúdo da nova tag
+    novaTag.innerHTML = `
+    <img class="icon" src="./icons/tag.svg" alt="">
+    <p>${nomeNovaTag}</p>
+    `;
+    
+    // Seleciona a lista existente
+    let listaTags = document.querySelector("#actions-tags");
+    
+    // Adiciona a nova tag à lista existente
+    listaTags.appendChild(novaTag);
+});
+
+

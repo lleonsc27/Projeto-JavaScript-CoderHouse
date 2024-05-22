@@ -1,0 +1,68 @@
+/********************* SETUP *********************/
+
+:root {
+    --colorprimary: #F1F1F1;
+    --colorprimary-50op: rgb(241, 241, 241, 0.5);
+    --colorsecundary: #252525;
+    --colortertiary: #77AC78;
+    --coloraccent: #DBFF7A;
+    --ff: 'inter', sans-serif;
+    --h1: 600 16px/20px var(--ff);
+    --h2: 600 12px/16px var(--ff);
+    --h3: 700 20px/24px var(--ff);
+    --p: 400 14px var(--ff);
+    --transition: 0.3s transform;
+    --shadow-style: rgba(0, 0, 0, 0.25);
+    --shadow: 1px 1px 5px 0px var(--shadow-style);
+    --shadow-bottom: 0px 1px 5px 0px var(--shadow-style);
+    --shadow-right: 1px 0px 5px 0px var(--shadow-style);
+    --shadow-spread: 0px 0px 5px 1px var(--shadow-style);
+}
+
+h1 {font: var(--h1);}
+h2 {font: var(--h2);}
+h3 {font: var(--h3);}
+p {font: var(--p);}
+
+h1,
+h2,
+h3,
+p {color: var(--colorsecundary);}
+
+html {scroll-behavior: smooth;}
+
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #f1f1f1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.icon {filter: invert(12%) sepia(2%) saturate(19%) hue-rotate(10deg) brightness(95%) contrast(92%);}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/********************* HEADER *********************/
+
+.header {
+    display: flex;
+}
+
+/********************* MAIN *********************/
+
+.main {
+    display: flex;
+}
+
+/********************* FOOTER *********************/
+
+.footer {
+    display: flex;
+}

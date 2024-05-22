@@ -1,7 +1,6 @@
 /********************* SETUP *********************/
 
 :root {
-    --colorp2: ;
     --colorprimary: #F1F1F1;
     --colorprimary-50op: rgb(241, 241, 241, 0.5);
     --colorsecundary: #252525;
@@ -93,18 +92,42 @@ a {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    align-items: center;
     background-color: var(--colorprimary);
+    gap: 16px;
+    height: 32px;
     border-radius: 10px;
     margin: 0 auto;
-    padding: 8px 16px;
+    padding: 0 16px;
     width: 252px;
     cursor: pointer;
 }
 
-.searchbox p {
-    opacity: 70%;
+.search-input {
+    border: none;
+    background: none;
+    flex-grow: 1;
+    outline: none;
+    font-size: 14px;
     font-weight: 500;
+    font-family: var(--ff);
 }
+
+.searchbox img {
+    height: 16px;
+    width: 16px;
+}
+
+.searchbox img:hover { 
+    transform: scale(1.1);
+    transition: var(--transition);
+}
+
+.lupa {
+    filter: invert(57%) sepia(0%) saturate(1%) hue-rotate(218deg) brightness(92%)
+    contrast(87%);
+}
+
 
 /********************* CONTAINER *********************/
 
@@ -261,7 +284,7 @@ hr {
   
     .header {
         justify-content: space-between;
-        gap: 16px;
+        gap: 10px;
         background-color: var(--colorprimary);
         padding: 0px 16px;
         z-index: 1;
@@ -280,14 +303,36 @@ hr {
         flex-flow: row nowrap;
         justify-content: space-between;
         background-color: var(--colorprimary);
-        border-radius: 0;
+        box-shadow: 0px 0px 5px -1px var(--shadow-style);
+        /* border: #d7d7d7 1px solid; */
+        border-radius: 10;
         margin: 0;
-        padding: 0;
-        width: auto;
+        padding: 0 16px;
+        width: 150px;
         
     }
+
+    .search-input {
+        border: none;
+        background: none;
+        flex-grow: 1;
+        outline: none;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: var(--ff);
+        width: 64px;
+    }
+
+    .search-input::placeholder {
+        color: var(--colorsecundary); /* Define a cor do placeholder */
+        opacity: 1; /* Define a opacidade como 1 para remover qualquer transparência */
+    }
     
-    .searchbox p {display: none;}
+    
+    
+
+    
+    /* .searchbox input {display: none;} */
     
     .lupa{filter: invert(12%) sepia(2%) saturate(19%) hue-rotate(10deg) brightness(95%) contrast(92%);}
     

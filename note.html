@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+    <link rel="stylesheet" href="./CSS/note.css">
+    <link rel="icon" href="./images/logo.png">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="return" role="button">Voltar</a>
+        <input id="note-title" type="text" placeholder="Título da Nota">
+    </header>
+    <main class="main">
+        <textarea id="note-content" placeholder="Conteúdo da Nota"></textarea>
+    </main>
+    <footer>
+        <div class="properties">
+            <button type="button" class="archive"><img src="./icons/archive.svg" alt="Arquivo"></button>
+            <button type="button" class="tag"><img src="./icons/tag.svg" alt="Tag"></button>
+            <button type="button" class="trash"><img src="./icons/trash.svg" alt="Trash"></button>
+        </div>
+        <button type="button" id="save-note">Salvar</button>
+    </footer>
+        <script src="./JS/note.js"></script>
+</body></html>

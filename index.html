@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notas</title>
     <link rel="icon" href="./images/logo.png">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./CSS/styles.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         </style></head>
@@ -20,10 +20,16 @@
             <h1>Notas</h1>
         </div>
         
-        <div class="searchbox">
-            <p>Pesquisar</p>
+        <div class="searchbox" onclick="activateSearch()">
+            <input
+                type="text"
+                class="search-input"
+                placeholder="Pesquisar"
+                id="search"
+                name="searchBox"
+            />
             <img class="lupa" src="./icons/lupa.svg" alt="">
-        </div>
+        </div>        
     </header>
     
     <div class="container">
@@ -31,18 +37,14 @@
         <aside id="menu" class="aside">
             <nav class="menu">
                 <div>
-                    <a href="#">
-                        <div role="button" class="menu-item">
-                            <img class="icon" src="./icons/notas.svg" alt="">
-                            <p>Notas</p>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div role="button" class="menu-item">
-                            <img class="icon" src="./icons/lembrete.svg" alt="">
-                            <p>Lembretes</p>
-                        </div>
-                    </a>
+                    <div role="button" class="menu-item">
+                        <img class="icon" src="./icons/notas.svg" alt="">
+                        <p>Notas</p>
+                    </div>
+                    <div role="button" class="menu-item">
+                        <img class="icon" src="./icons/lembrete.svg" alt="">
+                        <p>Lembretes</p>
+                    </div>
                 </div>
             </nav>
             
@@ -76,11 +78,11 @@
             <nav class="menu">
                 <div>
                     <div role="button" class="menu-item">
-                        <img class="icon" src="./icons/arquivo.svg" alt="">
+                        <img class="icon" src="./icons/archive.svg" alt="">
                         <p>Arquivo</p>
                     </div>
                     <div role="button" class="menu-item">
-                        <img class="icon" src="./icons/lixeira.svg" alt="">
+                        <img class="icon" src="./icons/trash.svg" alt="">
                         <p>Lixeira</p>
                     </div>
                 </div>
@@ -89,38 +91,13 @@
         
         <main class="main">
             <ul class="board-notas">
-                <!-- estas notas estão sendo usadas para preencher espaço e testar as funções, mas serão removidas futuramente -->
-                <li>
-                    <div class="atributos">
-                        <div class="arquivo" class="hidden"><img src="./icons/arquivo.svg" alt=""></div>
-                        <div class="tag">Compras</div>
-                    </div>
-                    <h3>Nota 01</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptatibus eos fugiat? Voluptas illo voluptate ea eaque. Error minima ullam quas quibusdam. Maiores veritatis quaerat ut voluptatem saepe quo rem.
-                    </p>
-                </li>
-                <li>
-                    <div class="tag"></div>
-                    <h3>Nota 02</h3>
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    </p>
-                </li>
-                <li>
-                    <div class="tag"></div>
-                    <h3>Nota 03</h3>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis ipsa tempora natus ex rem sequi quasi quaerat! Unde numquam id totam error voluptas velit recusandae. Sequi ab sit quos reprehenderit! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus dolore veritatis maiores eos nostrum commodi aliquam dolorum maxime quia vitae consectetur, ex inventore ut, aspernatur animi quae quod alias praesentium!
-                    </p>
-                </li>
+                <!-- Notas adicionadas dinamicamente -->
             </ul>
-            
             <div class="adicionar-nota" role="button" aria-label="botão adicionar nova nota">
                 <img src="./icons/mais.svg" alt="">
             </div>
         </main>
     </div>
 </body>
-<script src="./script.js"></script>
+<script src="./JS/script.js"></script>
 </html>

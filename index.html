@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="./CSS/styles.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-        </style></head>
+    </style>
+</head>
 <body>
     <header class="header">
         <div class="btn-hamburguer" onclick="clickMenu()">
@@ -37,11 +38,11 @@
         <aside id="menu" class="aside">
             <nav class="menu">
                 <div>
-                    <div role="button" class="menu-item">
+                    <div role="button" class="menu-item" data-filter="all" onclick="filterNotes('all')">
                         <img class="icon" src="./icons/notas.svg" alt="">
                         <p>Notas</p>
                     </div>
-                    <div role="button" class="menu-item">
+                    <div role="button" class="menu-item" data-filter="reminders" onclick="filterNotes('reminders')">
                         <img class="icon" src="./icons/lembrete.svg" alt="">
                         <p>Lembretes</p>
                     </div>
@@ -77,11 +78,11 @@
 
             <nav class="menu">
                 <div>
-                    <div role="button" class="menu-item">
+                    <div role="button" class="menu-item" data-filter="archive" onclick="filterNotes('archive')">
                         <img class="icon" src="./icons/archive.svg" alt="">
                         <p>Arquivo</p>
                     </div>
-                    <div role="button" class="menu-item">
+                    <div role="button" class="menu-item" data-filter="trash" onclick="filterNotes('trash')">
                         <img class="icon" src="./icons/trash.svg" alt="">
                         <p>Lixeira</p>
                     </div>
@@ -90,7 +91,7 @@
         </aside>
         
         <main class="main">
-            <ul class="board-notas">
+            <ul class="board-notas" id="board-notas">
                 <!-- Notas adicionadas dinamicamente -->
             </ul>
             <div class="adicionar-nota" role="button" aria-label="botão adicionar nova nota">

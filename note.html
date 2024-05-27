@@ -6,22 +6,43 @@
     <title>Notas</title>
     <link rel="stylesheet" href="./CSS/note.css">
     <link rel="icon" href="./images/logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    </style>
 </head>
 <body>
-    <header class="header">
-        <a href="index.html" class="return" role="button">Voltar</a>
-        <input id="note-title" type="text" placeholder="Título da Nota">
+    <header class="header">      
+        <a href="./index.html" class="logo">
+            <img src="./images/logo.png" alt="">
+            <h1>Notas</h1>
+        </a>
     </header>
-    <main class="main">
-        <textarea id="note-content" placeholder="Conteúdo da Nota"></textarea>
-    </main>
-    <footer>
-        <div class="properties">
-            <button type="button" class="archive"><img src="./icons/archive.svg" alt="Arquivo"></button>
-            <button type="button" class="tag"><img src="./icons/tag.svg" alt="Tag"></button>
-            <button type="button" class="trash"><img src="./icons/trash.svg" alt="Trash"></button>
-        </div>
-        <button type="button" id="save-note">Salvar</button>
-    </footer>
-        <script src="./JS/note.js"></script>
+    <div class="container">
+        <main class="main">
+            <div class="note-body">
+                <header class="note-header">
+                    <a href="index.html" class="note-return" role="button">Voltar</a>
+                    <button type="button" class="note-save" id="save-note">Salvar</button>
+                </header>
+                <main class="note-main">
+                    <input id="note-title" type="text" placeholder="Título da Nota">
+                    <textarea id="note-content" placeholder="Conteúdo da Nota"></textarea>
+                    <div class="properties-view">
+                        <div id="trash-property-view">Lixeira</div>
+                        <div id="archive-property-view">Arquivo</div>
+                        <div>Tag</div>
+                    </div>
+                </main>
+                <footer class="note-footer">
+                    <div class="note-properties">
+                        <button type="button" class="tag"><img id="tag-img" class="icon" src="./icons/tag.svg" alt="Tag"></button>
+                        <button type="button" class="archive"><img id="archive-img" class="icon" src="./icons/archive.svg" alt="Arquivo"></button>
+                        <button type="button" class="trash"><img id="trash-img" class="icon" src="./icons/trash.svg" alt="Trash"></button>
+                    </div>
+                </footer>
+                
+            </div>
+        </main>
+    </div>
+    <script src="./JS/note.js"></script>
 </body></html>

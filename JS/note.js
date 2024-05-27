@@ -38,17 +38,34 @@ document.addEventListener("DOMContentLoaded", function() {
     archiveButton.classList.toggle('active', isArchived);
     trashButton.classList.toggle('active', isTrashed);
 
+    // Função para atualizar a visibilidade dos divs based on localStorage values
+    function updateVisibility() {
+        const isArchived = localStorage.getItem(`note-${noteId}-archived`) === "true";
+        const isTrashed = localStorage.getItem(`note-${noteId}-trashed`) === "true";
+
+        const archiveDiv = document.getElementById('archive-property-view');
+        const trashDiv = document.getElementById('trash-property-view');
+
+        archiveDiv.style.display = isArchived ? 'block' : 'none';
+        trashDiv.style.display = isTrashed ? 'block' : 'none';
+    }
+
+    // Inicializa a visibilidade dos divs
+    updateVisibility();
+
     // Adiciona ouvintes de eventos aos botões archive e trash
     archiveButton.addEventListener('click', function() {
         const newValue = localStorage.getItem(`note-${noteId}-archived`) !== "true";
         localStorage.setItem(`note-${noteId}-archived`, newValue);
         archiveButton.classList.toggle('active', newValue);
+        updateVisibility();
     });
 
     trashButton.addEventListener('click', function() {
         const newValue = localStorage.getItem(`note-${noteId}-trashed`) !== "true";
         localStorage.setItem(`note-${noteId}-trashed`, newValue);
         trashButton.classList.toggle('active', newValue);
+        updateVisibility();
     });
 
     // Adiciona ouvintes de eventos aos campos de entrada para detectar mudanças
@@ -70,5 +87,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Atualiza o texto do botão após salvar a nota
         document.getElementById('save-note').innerText = "Nota salva";
+    });
+
+    // Event listener for storage changes
+    window.addEventListener('storage', function(event) {
+        if (event.key === `note-${noteId}-archived` || event.key === `note-${noteId}-trashed`) {
+            updateVisibility();
+        }
     });
 });
